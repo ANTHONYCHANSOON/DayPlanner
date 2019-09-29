@@ -37,6 +37,8 @@ let myVar = [
     }];
 
 checklocalstorage();
+gettimedate();
+changezone();
 
 $(".input").on("keyup", function () {
     let newstring = "";
@@ -58,22 +60,22 @@ $(".input").on("keyup", function () {
 })
 
 function checklocalstorage() {
-    
+
     let storedmyVar = JSON.parse(localStorage.getItem("myVar"));
 
     if (storedmyVar !== null) {
         //alert("storedmyvar is not empty");
         myVar = storedmyVar;
-        console.log(myVar);
+        //console.log(myVar);
     }
 
     renderlocalstorage();
 }
 
 function renderlocalstorage() {
-    
+
     for (let i = 0; i < myVar.length; i++) {
-        
+
         let head = myVar[i].time;
         //console.log(myVar[i].time);
         let newTime = $("<row>");
@@ -89,6 +91,7 @@ function renderlocalstorage() {
         let newDivSched = $("<input>");
         newDivSched.val(myVar[i].event);
         newDivSched.addClass("col-sm-6 input");
+        newDivSched.attr("id", "i" + myVar[i].time + "inputpast");
         newDivSched.attr("data-name", myVar[i].time);
         //console.log(newDivSched);
         newTime.append(newDivSched);
@@ -99,7 +102,182 @@ function renderlocalstorage() {
         newDivBtn.addClass("col-sm-3 submitbuttons");
         newTime.append(newDivBtn);
     }
+}
 
+function gettimedate() {
+    let today = new Date();
+    let date = (today.getMonth() + 1) + "-" + today.getDate() + "-" + today.getFullYear();
+    let newDivdate = $("<h4>");
+    newDivdate.text(date);
+    $("#jumbotrondate").append(newDivdate);
+
+    let time = today.getHours() + ":" + today.getMinutes();
+    let newDivtime = $("<h4>");
+    newDivtime.text(time);
+    $("#jumbotrondate").append(newDivtime);
+}
+
+function changezone() {
+
+    let today = new Date();
+    let comparetime = today.getHours();
+    //let comparetime = 1;
+    //console.log(comparetime);
+    let time09 = 9;
+    let time10 = 10;
+    let time11 = 11;
+    let time12 = 12;
+    let time13 = 13;
+    let time14 = 14;
+    let time15 = 15;
+    let time16 = 16;
+    let time17 = 17;
+
+    //alert(today.getHours());
+
+    if (comparetime < time09) 
+    {
+        let yes = document.querySelector("#i0900inputpast");
+        yes.setAttribute("id", "i0900inputfuture");
+    } 
+    else if (comparetime === time09) 
+    {
+        let yes = document.querySelector("#i0900inputpast");
+        yes.setAttribute("id", "i0900inputpresent");
+    } 
+    else if(comparetime > time09)
+    {
+        let yes = document.querySelector("#i0900inputpast");
+        yes.setAttribute("id", "i0900inputpast");
+    }
+
+    if (comparetime < time10) 
+    {
+        let yes = document.querySelector("#i1000inputpast");
+        yes.setAttribute("id", "i1000inputfuture");
+    } 
+    else if (comparetime === time10) 
+    {
+        let yes = document.querySelector("#i1000inputpast");
+        yes.setAttribute("id", "i1000inputpresent");
+    } 
+    else if(comparetime > time10)
+    {
+        let yes = document.querySelector("#i1000inputpast");
+        yes.setAttribute("id", "i1000inputpast");
+    }
+
+    if (comparetime < time11) 
+    {
+        let yes = document.querySelector("#i1100inputpast");
+        yes.setAttribute("id", "i1100inputfuture");
+    } 
+    else if (comparetime === time11) 
+    {
+        let yes = document.querySelector("#i1100inputpast");
+        yes.setAttribute("id", "i1100inputpresent");
+    } 
+    else if(comparetime > time11)
+    {
+        let yes = document.querySelector("#i1100inputpast");
+        yes.setAttribute("id", "i1100inputpast");
+    }
+
+    if (comparetime < time12) 
+    {
+        let yes = document.querySelector("#i1200inputpast");
+        yes.setAttribute("id", "i1200inputfuture");
+    } 
+    else if (comparetime === time12) 
+    {
+        let yes = document.querySelector("#i1200inputpast");
+        yes.setAttribute("id", "i0900inputpresent");
+    } 
+    else if(comparetime > time12)
+    {
+        let yes = document.querySelector("#i1200inputpast");
+        yes.setAttribute("id", "i0900inputpast");
+    }
+
+    if (comparetime < time13) 
+    {
+        let yes = document.querySelector("#i1300inputpast");
+        yes.setAttribute("id", "i1300inputfuture");
+    } 
+    else if (comparetime === time13) 
+    {
+        let yes = document.querySelector("#i1300inputpast");
+        yes.setAttribute("id", "i1300inputpresent");
+    } 
+    else if(comparetime > time13)
+    {
+        let yes = document.querySelector("#i1300inputpast");
+        yes.setAttribute("id", "i1300inputpast");
+    }
+
+    if (comparetime < time14) 
+    {
+        let yes = document.querySelector("#i1400inputpast");
+        yes.setAttribute("id", "i1400inputfuture");
+    } 
+    else if (comparetime === time14) 
+    {
+        let yes = document.querySelector("#i1400inputpast");
+        yes.setAttribute("id", "i1400inputpresent");
+    } 
+    else if(comparetime > time14)
+    {
+        let yes = document.querySelector("#i1400inputpast");
+        yes.setAttribute("id", "i1400inputpast");
+    }
+
+    if (comparetime < time15) 
+    {
+        let yes = document.querySelector("#i1500inputpast");
+        yes.setAttribute("id", "i1500inputfuture");
+    } 
+    else if (comparetime === time15) 
+    {
+        let yes = document.querySelector("#i1500inputpast");
+        yes.setAttribute("id", "i1500inputpresent");
+    } 
+    else if(comparetime > time15)
+    {
+        let yes = document.querySelector("#i1500inputpast");
+        yes.setAttribute("id", "i1500inputpast");
+    }
+
+    if (comparetime < time16) 
+    {
+        let yes = document.querySelector("#i1600inputpast");
+        yes.setAttribute("id", "i0900inputfuture");
+    } 
+    else if (comparetime === time16) 
+    {
+        let yes = document.querySelector("#i1600inputpast");
+        yes.setAttribute("id", "i1600inputpresent");
+    } 
+    else if(comparetime > time16)
+    {
+        let yes = document.querySelector("#i1600inputpast");
+        yes.setAttribute("id", "i1600inputpast");
+    }
+
+    if (comparetime < time17) 
+    {
+        let yes = document.querySelector("#i1700inputpast");
+        yes.setAttribute("id", "i1700inputfuture");
+    } 
+    else if (comparetime === time17) 
+    {
+        let yes = document.querySelector("#i1700inputpast");
+        yes.setAttribute("id", "i1700inputpresent");
+    } 
+    else if(comparetime > time17)
+    {
+        let yes = document.querySelector("#i1700inputpast");
+        yes.setAttribute("id", "i1700inputpast");
+    }
 
 
 }
